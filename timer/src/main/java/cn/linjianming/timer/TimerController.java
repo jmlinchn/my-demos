@@ -1,8 +1,7 @@
 package cn.linjianming.timer;
 
-import java.time.LocalDate;
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.concurrent.TimeUnit;
 
@@ -58,15 +57,13 @@ public class TimerController implements Runnable {
 
     private String getRemainTime() {
         LocalDateTime now = LocalDateTime.now();
-
-        LocalDate nextDate = LocalDate.now().plusDays(1);
-        LocalTime nextTime = LocalTime.of(0, 0);
-        LocalDateTime nextDateTime = LocalDateTime.of(nextDate, nextTime);
+        LocalDateTime nextDateTime = LocalDateTime.now().plusDays(1).withHour(0).withMinute(0).withSecond(0);
+        LocalDateTime nextMinuteTime = LocalDateTime.now().plusMinutes(1).withSecond(0);
 
         long minutes = MINUTES.between(now, nextDateTime);
-        long seconds = SECONDS.between(now, nextDateTime);
-
-        return minutes + " min   /   " + seconds + " sec";
+        long seconds = SECONDS.between(now, nextMinuteTime);
+        return "min: " + new DecimalFormat("0000").format(minutes) + " / " + 60 * 24
+                + "  sec: " + new DecimalFormat("00").format(seconds);
     }
 
 }

@@ -15,7 +15,7 @@ public interface FrameConstant {
     int FRAME_WIDTH = 180;
     int FRAME_HEIGHT = 60;
 
-    int X_PADDING = 10;
+    int X_PADDING = 8;
     int Y_PADDING = 5;
 
     int LABEL_WIDTH = 250;
