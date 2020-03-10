@@ -20,7 +20,7 @@ public class TimerFrame extends JFrame {
         this.setTitle(FrameConstant.FRAME_TITLE);
         this.setSize(new Dimension(FrameConstant.FRAME_WIDTH, FrameConstant.FRAME_HEIGHT));
 
-        // ���Բ���
+        // 设置绝对布局
         this.setLayout(null);
 
         currentTimeLabel = new JLabel();

@@ -12,7 +12,7 @@ public class TimerMouseDragListener extends MouseAdapter {
 
     private TimerFrame timerFrame;
     /**
-     * �϶�ǰ������
+     * 鼠标起始点
      */
     private Point startPoint;
 
@@ -41,12 +41,12 @@ public class TimerMouseDragListener extends MouseAdapter {
     }
 
     /**
-     * �����µ�����λ�� = �ƶ�ǰ����λ��+�����ָ�뵱ǰ����-��갴��ʱָ���λ�ã�
+     * 窗口终点 = 窗口起始点 + (鼠标终止点-鼠标起始点)
      */
     @Override
     public void mouseDragged(MouseEvent e) {
         super.mouseDragged(e);
-        // �϶��������
+        // 鼠标终止点
         Point endPoint = e.getPoint();
         double targetX = timerFrame.getLocation().getX() + (endPoint.getX() - startPoint.getX());
         double targetY = timerFrame.getLocation().getY() + (endPoint.getY() - startPoint.getY());

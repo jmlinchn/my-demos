@@ -21,11 +21,11 @@ public class TimerController implements Runnable {
 
     public TimerController() {
         timerFrame = TimerFrame.getTimerFrame();
-        // �϶�����
+        // 添加鼠标拖动监听
         timerMouseDragListener = new TimerMouseDragListener();
         timerFrame.addMouseListener(timerMouseDragListener);
         timerFrame.addMouseMotionListener(timerMouseDragListener);
-        // �������
+        // 添加鼠标关闭监听
         timerMouseCloseListener = new TimerMouseCloseListener();
         timerFrame.getExitLabel().addMouseListener(timerMouseCloseListener);
     }
