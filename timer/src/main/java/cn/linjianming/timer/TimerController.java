@@ -63,7 +63,7 @@ public class TimerController implements Runnable {
         long minutes = MINUTES.between(now, nextDateTime);
         long seconds = SECONDS.between(now, nextMinuteTime);
         return "min: " + new DecimalFormat("0000").format(minutes) + " / " + 60 * 24
-                + "  sec: " + new DecimalFormat("00").format(seconds);
+                + "  sec: " + new DecimalFormat("00").format(seconds == 60 ? 0 : seconds);
     }
 
 }
