@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.linjianming</groupId>
+    <artifactId>timer</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <!-- 项目基本配置参数 -->
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <build>
+        <finalName>timer</finalName>
+        <plugins>
+            <!-- maven 构建工具 -->
+            <plugin>
+                <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-jar-plugin -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.0</version>
+                <!-- 对要打的jar包进行配置 -->
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <!-- 是否添加第三方jar包到Manifest的classpath -->
+                            <addClasspath>true</addClasspath>
+                            <!-- manifest的前缀，即jar包的相对路径-->
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <!-- 主启动类 -->
+                            <mainClass>cn.linjianming.timer.StartApp</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
