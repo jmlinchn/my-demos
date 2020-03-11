@@ -1,4 +1,6 @@
-package cn.linjianming.timer;
+package cn.linjianming.timer.controller;
+
+import cn.linjianming.timer.view.TimerFrame;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
