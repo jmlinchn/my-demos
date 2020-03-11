@@ -15,7 +15,7 @@ public interface FrameConstant {
     String LONG_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
     String SHORT_TIME_FORMAT = "HH:mm:ss";
 
-    Color COLOR_GO = new Color(60, 176, 112);
+    Color COLOR_GO = new Color(48, 118, 66);
     Color COLOR_PAUSE = Color.RED;
     Color COLOR_OVERTIME = new Color(153, 52, 0);
 

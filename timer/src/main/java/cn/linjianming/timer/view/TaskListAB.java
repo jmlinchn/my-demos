@@ -100,7 +100,7 @@ public class TaskListAB extends JPanel {
             Task task = entry.getValue();
             boolean isOver = task.reduceSeconds();
             if (isOver) {
-                new Thread(() -> JOptionPane.showMessageDialog(null, "事件" + task.getTaskName() + "结束啦！")).start();
+                new Thread(() -> JOptionPane.showMessageDialog(null, "事件 【" + task.getTaskName() + "】 结束啦！")).start();
             }
             setTextForTaskList(entry.getKey(), task);
         }
