@@ -21,16 +21,13 @@ public class TimerMouseCloseListener extends MouseAdapter {
     public void mouseClicked(MouseEvent e) {
         int mouseButton = e.getButton();
         if (MouseEvent.BUTTON1 == mouseButton) {
-            // Left button
-            System.out.println("左键单击");
+            // 左键单击
             timerFrame.dispose();
             System.exit(0);
         } else if (MouseEvent.BUTTON2 == mouseButton) {
-            // Middle button
-            System.out.println("滚轮单击");
+            // 滚轮单击
         } else if (MouseEvent.BUTTON3 == mouseButton) {
-            // Right button
-            System.out.println("右键单击");
+            // 右键单击
         }
     }
 

@@ -12,6 +12,7 @@ public class Task {
     private LocalDateTime endDateTime;
     private boolean isPause;
     private int remainSeconds;
+    private boolean isOver;
 
     public Task(String taskName, int minutes) {
         this.remainSeconds = minutes * 60;
@@ -19,12 +20,31 @@ public class Task {
         this.taskName = taskName;
     }
 
-    public void reduceSeconds() {
-        if (isPause) {
+    /**
+     * 返回是否剩余时间为 0
+     * @return
+     */
+    public boolean reduceSeconds() {
+        if (isOver) {
+            // 结束：显示当前时间，同时显示超时时间
+            this.endDateTime = LocalDateTime.now();
+            // 超时时间可以暂停
+            if (!isPause) {
+                remainSeconds--;
+            }
+        } else if (isPause) {
+            // 未结束的暂停：
             this.endDateTime = LocalDateTime.now().plusSeconds(remainSeconds);
         } else {
+            // 未结束未暂停：扣减时间
+            if (remainSeconds == 0) {
+                // 当倒计时刚刚结束时提示
+                isOver = true;
+                return true;
+            }
             remainSeconds--;
         }
+        return false;
     }
 
     public void togglePause() {
@@ -48,5 +68,13 @@ public class Task {
 
     public LocalDateTime getEndDateTime() {
         return endDateTime;
+    }
+
+    public boolean isPause() {
+        return isPause;
+    }
+
+    public boolean isOver() {
+        return isOver;
     }
 }

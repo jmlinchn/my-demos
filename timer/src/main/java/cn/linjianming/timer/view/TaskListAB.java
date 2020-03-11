@@ -6,6 +6,7 @@ import cn.linjianming.timer.model.Task;
 import cn.linjianming.timer.model.TaskLabel;
 
 import javax.swing.*;
+import java.awt.event.MouseListener;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -45,6 +46,7 @@ public class TaskListAB extends JPanel {
                 FrameConstant.TASK_LIST_X, FrameConstant.TASK_LIST_Y,
                 FrameConstant.TASK_LIST_WIDTH, FrameConstant.TASK_LABEL_HEIGHT);
 
+        newTask.setForeground(FrameConstant.COLOR_GO);
         newTask.addMouseListener(new TaskListMouseListener());
         taskMap.put(newTask, task);
         rebuild();
@@ -52,10 +54,15 @@ public class TaskListAB extends JPanel {
 
     /**
      * 删除任务
-     * @param taskId 任务Id
+     * @param taskLabel 任务组件
      */
-    public synchronized static void removeTask(String taskId) {
+    public synchronized static void removeTask(TaskLabel taskLabel) {
         // 删除的时候要接触监听
+        for (MouseListener mouseListener : taskLabel.getMouseListeners()) {
+            taskLabel.removeMouseListener(mouseListener);
+        }
+        taskMap.remove(taskLabel);
+        rebuild();
     }
 
     /**
@@ -91,18 +98,36 @@ public class TaskListAB extends JPanel {
         Set<Map.Entry<TaskLabel, Task>> entries = taskMap.entrySet();
         for (Map.Entry<TaskLabel, Task> entry : entries) {
             Task task = entry.getValue();
-            task.reduceSeconds();
+            boolean isOver = task.reduceSeconds();
+            if (isOver) {
+                new Thread(() -> JOptionPane.showMessageDialog(null, "事件" + task.getTaskName() + "结束啦！")).start();
+            }
             setTextForTaskList(entry.getKey(), task);
         }
     }
 
     private static void setTextForTaskList(TaskLabel taskLabel, Task task) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(FrameConstant.SHORT_TIME_FORMAT);
-        taskLabel.setText(
-                "[" + task.getEndDateTime().format(dateTimeFormatter) + "]  "
-                        + task.getTaskName()
-                        + " - " + task.getRemainSeconds() + "s"
-        );
+        StringBuilder sb = new StringBuilder()
+                .append("[")
+                .append(task.getEndDateTime().format(dateTimeFormatter))
+                .append("]  ")
+                .append(task.getTaskName())
+                .append(" - ");
+        int remainSeconds = task.getRemainSeconds();
+        if (remainSeconds < 0) {
+            if (task.isPause()) {
+                taskLabel.setForeground(FrameConstant.COLOR_PAUSE);
+            } else {
+                taskLabel.setForeground(FrameConstant.COLOR_OVERTIME);
+            }
+            sb.append("超时").append(-remainSeconds);
+        } else {
+            sb.append(remainSeconds);
+        }
+        sb.append("s");
+        taskLabel.setText(sb.toString());
+
     }
 
     // ============================== getter ==============================

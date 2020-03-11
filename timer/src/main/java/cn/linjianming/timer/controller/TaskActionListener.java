@@ -44,5 +44,8 @@ public class TaskActionListener implements ActionListener {
 
         Task task = new Task(taskName, Integer.parseInt(taskTime));
         TaskListAB.addTask(task);
+
+        taskNameInput.setText("");
+        taskTimeInput.setText("");
     }
 }

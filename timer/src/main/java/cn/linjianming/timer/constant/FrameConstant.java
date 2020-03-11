@@ -1,5 +1,7 @@
 package cn.linjianming.timer.constant;
 
+import java.awt.*;
+
 /**
  * @Author: James Lin
  * @Date: 2020/03/10 08:49
@@ -13,9 +15,13 @@ public interface FrameConstant {
     String LONG_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
     String SHORT_TIME_FORMAT = "HH:mm:ss";
 
+    Color COLOR_GO = new Color(60, 176, 112);
+    Color COLOR_PAUSE = Color.RED;
+    Color COLOR_OVERTIME = new Color(153, 52, 0);
+
     /***** 窗口属性 *****/
-    int FRAME_X = 300;
-    int FRAME_Y = 200;
+    int FRAME_X = 1650;
+    int FRAME_Y = 70;
     int FRAME_WIDTH = 180;
     int FRAME_HEIGHT = 190;
 

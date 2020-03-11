@@ -1,9 +1,11 @@
 package cn.linjianming.timer.controller;
 
+import cn.linjianming.timer.constant.FrameConstant;
 import cn.linjianming.timer.model.Task;
 import cn.linjianming.timer.model.TaskLabel;
 import cn.linjianming.timer.view.TaskListAB;
 
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -16,10 +18,19 @@ public class TaskListMouseListener extends MouseAdapter {
     @Override
     public void mouseClicked(MouseEvent e) {
         super.mouseClicked(e);
-        Object source = e.getSource();
-        if (source instanceof TaskLabel) {
-            Task task = TaskListAB.getTaskMap().get(source);
+        int mouseButton = e.getButton();
+        TaskLabel taskLabel = (TaskLabel) e.getSource();
+        Task task = TaskListAB.getTaskMap().get(taskLabel);
+        if (MouseEvent.BUTTON1 == mouseButton) {
+            // 左键单击
             task.togglePause();
+            Color newColor = task.isPause() ? FrameConstant.COLOR_PAUSE : FrameConstant.COLOR_GO;
+            taskLabel.setForeground(newColor);
+        } else if (MouseEvent.BUTTON2 == mouseButton) {
+            // 滚轮单击
+        } else if (MouseEvent.BUTTON3 == mouseButton) {
+            // 右键单击
+            TaskListAB.removeTask(taskLabel);
         }
     }
 
