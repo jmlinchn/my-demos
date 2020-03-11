@@ -70,12 +70,12 @@ public interface FrameConstant {
     int TASK_BUTTON_Y = TASK_PADDING_Y;
     int TASK_BUTTON_WIDTH = 30;
     int TASK_BUTTON_HEIGHT = 48;
-    int TASK_BUTTON_FONT_SIZE = 10;
+    int TASK_BUTTON_FONT_SIZE = 11;
     /***** 任务列表 *****/
     int TASK_LIST_X = 0;
     int TASK_LIST_Y = TASK_PANEL_Y + TASK_PANEL_HEIGHT;
     int TASK_LIST_WIDTH = 180;
     int TASK_LIST_HEIGHT = 25;
-    int TASK_ITEM_LABEL_HEIGHT = 16;
+    int TASK_ITEM_LABEL_HEIGHT = 18; // 打包时使用 18， 开发时使用 16
 
 }
