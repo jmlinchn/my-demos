@@ -63,7 +63,7 @@ public interface FrameConstant {
     int TASK_INPUT_HEIGHT = 25;
     int TASK_INPUT_FONT_SIZE = 11;
     /***** 任务时间单位 *****/
-    int TASK_TIME_UNIT_WIDTH = 25;
+    int TASK_TIME_UNIT_WIDTH = 30;
     int TASK_TIME_UNIT_HEIGHT = TASK_LABEL_HEIGHT;
     /***** 任务添加按钮 *****/
     int TASK_BUTTON_X = 145;

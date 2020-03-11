@@ -52,7 +52,7 @@ public class TaskPanel extends JPanel {
         timeUnitLabel = new TaskLabel(
                 FrameConstant.TASK_INPUT_X + FrameConstant.TASK_INPUT_WIDTH - FrameConstant.TASK_TIME_UNIT_WIDTH, FrameConstant.TASK_INPUT_Y + FrameConstant.TASK_INPUT_HEIGHT,
                 FrameConstant.TASK_TIME_UNIT_WIDTH, FrameConstant.TASK_TIME_UNIT_HEIGHT);
-        timeUnitLabel.setText("min");
+        timeUnitLabel.setText("分钟");
         this.add(timeUnitLabel);
 
         taskButton = new TaskButton(FrameConstant.TASK_BUTTON_FONT_SIZE,
